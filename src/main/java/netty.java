@@ -16,7 +16,7 @@ public class netty {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(bossgroup,workergroup)
                     .channel(NioServerSocketChannel.class)
-                    .childHandler(null);
+                    .childHandler(new HelloServerInitializer());
 
             ChannelFuture channelFuture = serverBootstrap.bind(8088).sync();
             channelFuture.channel().closeFuture().sync();
